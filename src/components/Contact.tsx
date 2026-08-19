@@ -39,7 +39,7 @@ export default function Contact() {
                 experiencia que mereces.
               </p>
               <div className="space-y-2">
-                <p className="text-gray-900"><span className="font-medium">Teléfono:</span> (829) 222-2480</p>
+                <p className="text-gray-900"><span className="font-medium">Teléfono:</span> +1 (484) 473-1113</p>
                 <p className="text-gray-900"><span className="font-medium">Correo Electrónico:</span> info@lromanarealestate.com</p>
                 <p className="text-gray-900"><span className="font-medium">Dirección:</span> Reparto Torres Calle 4ta #5, La Romana, República Dominicana.</p>
               </div>
