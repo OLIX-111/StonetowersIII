@@ -370,7 +370,57 @@
       transition: opacity 1s;
     }
     .carousel-slide.active { opacity: 1; }
-    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+
+    /* ── LIGHTBOX ────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,.9);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img-wrap {
+      max-width: 64rem;
+      max-height: 90vh;
+      width: 100%;
+      padding: 0 5rem;
+    }
+    .lightbox-img-wrap img {
+      width: 100%;
+      height: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+    .lightbox-counter {
+      text-align: center;
+      color: rgba(255,255,255,.6);
+      font-size: .875rem;
+      margin-top: .75rem;
+    }
+    .lightbox-btn {
+      position: absolute;
+      background: rgba(0,0,0,.4);
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      padding: .75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+    .lightbox-btn:hover { background: rgba(0,0,0,.7); }
+    .lightbox-btn svg { width: 24px; height: 24px; stroke: #fff; fill: none; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-close { top: 1rem; right: 1rem; }
     .carousel-dots {
       position: absolute;
       bottom: 1rem;
@@ -425,6 +475,23 @@
   </style>
 </head>
 <body>
+
+<!-- ═══ LIGHTBOX ══════════════════════════════════════ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-btn lightbox-prev" onclick="event.stopPropagation(); lbGo(-1)" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="" />
+    <p class="lightbox-counter" id="lightbox-counter"></p>
+  </div>
+  <button class="lightbox-btn lightbox-next" onclick="event.stopPropagation(); lbGo(1)" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <button class="lightbox-btn lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+</div>
 
 <!-- ═══ NAVBAR ═══════════════════════════════════════ -->
 <nav class="nav">
@@ -877,6 +944,42 @@
   }
 
   setInterval(() => goTo((current + 1) % slides.length), 3000);
+
+  // Lightbox
+  const lbImages = Array.from(slides).map(s => ({ src: s.querySelector('img').src, alt: s.querySelector('img').alt }));
+  let lbCurrent = 0;
+
+  function openLightbox(i) {
+    lbCurrent = i;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function lbGo(dir) {
+    lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    document.getElementById('lightbox-img').src = lbImages[lbCurrent].src;
+    document.getElementById('lightbox-img').alt = lbImages[lbCurrent].alt;
+    document.getElementById('lightbox-counter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+  }
+
+  slides.forEach((slide, i) => slide.querySelector('img').addEventListener('click', () => openLightbox(i)));
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  lbGo(-1);
+    if (e.key === 'ArrowRight') lbGo(1);
+    if (e.key === 'Escape')     closeLightbox();
+  });
 </script>
 
 </body>
