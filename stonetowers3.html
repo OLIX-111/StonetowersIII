@@ -38,6 +38,33 @@
     }
     .nav-links a:hover { color: #0f1629; }
     .nav-links svg { width: 16px; height: 16px; }
+
+    /* ── DROPDOWN ────────────────────────────────── */
+    .nav-links li { position: relative; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + .75rem);
+      left: 0;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      min-width: 200px;
+      z-index: 200;
+      overflow: hidden;
+    }
+    .nav-links li:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block;
+      padding: .75rem 1.25rem;
+      text-decoration: none;
+      color: #111827;
+      font-size: .875rem;
+      font-weight: 500;
+    }
+    .dropdown-menu a:hover { background: #f3f4f6; }
+
     .nav-cta {
       background: #1b5db8; color: #fff;
       border: none; border-radius: 999px;
@@ -504,6 +531,12 @@
           <polyline points="6 9 12 15 18 9"/>
         </svg>
       </a>
+      <div class="dropdown-menu">
+        <a href="#">Stone Towers III</a>
+        <a href="#">Costa Mar</a>
+        <a href="https://vercel.com/oliver-mejia-pegueros-projects/frailejon-ii/DSJir5kiW6kwSoJbucHDhpLz43wP" target="_blank">Altos de Frailejo</a>
+        <a href="https://frailejon-village-git-main-oliver-mejia-pegueros-projects.vercel.app/" target="_blank">Frailejon Village</a>
+      </div>
     </li>
     <li><a href="#">Propiedades</a></li>
     <li><a href="#">Agentes</a></li>
