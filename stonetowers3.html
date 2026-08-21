@@ -1,553 +1,495 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stone Towers III - L'Romana Real Estate</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #0f1629;
-      background: #fff;
-      line-height: 1.6;
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── NAVBAR ─────────────────────────────────── */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: #fff;
-      box-shadow: 0 1px 6px rgba(0,0,0,.07);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
-      padding: 0 2.5rem;
-    }
-    .nav-brand { font-weight: 700; font-size: .95rem; color: #0f1629; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: #374151; font-size: .9rem;
-      display: flex; align-items: center; gap: .25rem;
-    }
-    .nav-links a:hover { color: #0f1629; }
-    .nav-links svg { width: 16px; height: 16px; }
+  .st3-wrap {
+    font-family: 'Inter', sans-serif;
+    color: #0f1629;
+    background: #fff;
+    line-height: 1.6;
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
 
-    /* ── DROPDOWN ────────────────────────────────── */
-    .nav-links li { position: relative; }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: calc(100% + .75rem);
-      left: 0;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.12);
-      min-width: 200px;
-      z-index: 200;
-      overflow: hidden;
-    }
-    .nav-links li:hover .dropdown-menu { display: block; }
-    .dropdown-menu a {
-      display: block;
-      padding: .75rem 1.25rem;
-      text-decoration: none;
-      color: #111827;
-      font-size: .875rem;
-      font-weight: 500;
-    }
-    .dropdown-menu a:hover { background: #f3f4f6; }
+  /* HERO */
+  .st3-wrap .hero-title {
+    text-align: center;
+    padding: 3.5rem 1rem 3rem;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.2;
+  }
+  .st3-wrap .hero-img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
 
-    .nav-cta {
-      background: #1b5db8; color: #fff;
-      border: none; border-radius: 999px;
-      padding: .55rem 1.5rem; font-size: .9rem; font-weight: 600;
-      text-decoration: none; cursor: pointer;
-    }
+  /* INTRO */
+  .st3-wrap .intro { text-align: center; padding: 5rem 1rem; }
+  .st3-wrap .intro p {
+    max-width: 56rem;
+    margin: 0 auto 2rem;
+    font-size: clamp(1.1rem, 2vw, 1.875rem);
+    font-weight: 600;
+    line-height: 1.6;
+    color: #1f2937;
+  }
+  .st3-wrap .intro-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .st3-wrap .btn-dark {
+    background: #111827; color: #fff;
+    border: none; border-radius: 999px;
+    padding: .875rem 2rem; font-size: 1rem; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+  }
+  .st3-wrap .btn-light {
+    background: #ecf1f8; color: #434444;
+    border: none; border-radius: 999px;
+    padding: .875rem 2rem; font-size: 1rem; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+  }
 
-    /* ── HERO ────────────────────────────────────── */
-    .hero { padding-top: 70px; }
-    .hero-title {
-      text-align: center;
-      padding: 3.5rem 1rem 3rem;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 600;
-      color: #111827;
-      line-height: 1.2;
-    }
-    .hero-img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
+  /* ABOUT */
+  .st3-wrap .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+    min-height: 560px;
+    width: 100%;
+    max-width: none;
+  }
+  .st3-wrap .about-img-wrap { position: relative; width: 100%; height: 100%; min-height: 480px; overflow: hidden; }
+  .st3-wrap .about-img { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; display: block; }
+  .st3-wrap .about-text {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .st3-wrap .about h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+    color: #111827;
+  }
+  .st3-wrap .about p { color: #4b5563; line-height: 1.85; margin-bottom: 1rem; }
 
-    /* ── INTRO ───────────────────────────────────── */
-    .intro {
-      text-align: center;
-      padding: 5rem 1rem;
-    }
-    .intro p {
-      max-width: 56rem;
-      margin: 0 auto 2rem;
-      font-size: clamp(1.1rem, 2vw, 1.875rem);
-      font-weight: 600;
-      line-height: 1.6;
-      color: #1f2937;
-    }
-    .intro-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-dark {
-      background: #111827; color: #fff;
-      border: none; border-radius: 999px;
-      padding: .875rem 2rem; font-size: 1rem; font-weight: 600;
-      text-decoration: none; cursor: pointer;
-    }
-    .btn-light {
-      background: #ecf1f8; color: #434444;
-      border: none; border-radius: 999px;
-      padding: .875rem 2rem; font-size: 1rem; font-weight: 600;
-      text-decoration: none; cursor: pointer;
-    }
+  /* WHY CHOOSE */
+  .st3-wrap .why {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 5rem;
+    align-items: start;
+  }
+  .st3-wrap .why h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: #111827;
+  }
+  .st3-wrap .why > div:first-child p { color: #4b5563; line-height: 1.85; }
+  .st3-wrap .features { display: flex; flex-direction: column; gap: 1.5rem; }
+  .st3-wrap .feature { display: flex; gap: 1rem; align-items: flex-start; }
+  .st3-wrap .feature-icon {
+    width: 48px; height: 48px;
+    background: #111827;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .st3-wrap .feature-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; }
+  .st3-wrap .feature h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: .25rem; color: #111827; }
+  .st3-wrap .feature p { font-size: .95rem; color: #4b5563; line-height: 1.6; }
 
-    /* ── ABOUT ───────────────────────────────────── */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      padding: 5rem 5rem;
-      align-items: center;
-      max-width: 90rem;
-      margin: 0 auto;
-    }
-    .about-img-wrap {
-      position: relative;
-      width: 100%;
-      height: 480px;
-    }
-    .about-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 4px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.12);
-    }
-    .about h2 {
-      font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      line-height: 1.25;
-      color: #111827;
-    }
-    .about p { color: #4b5563; line-height: 1.85; margin-bottom: 1rem; }
+  /* AMENITIES */
+  .st3-wrap .amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+    min-height: 560px;
+    width: 100%;
+    max-width: none;
+  }
+  .st3-wrap .amenities-content {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .st3-wrap .amenities h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+    color: #111827;
+  }
+  .st3-wrap .amenities-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+  .st3-wrap .amenities-list li {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: 1.125rem; font-weight: 500; color: #111827;
+  }
+  .st3-wrap .check {
+    width: 32px; height: 32px;
+    background: #111827;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .st3-wrap .check svg { width: 16px; height: 16px; fill: #fff; }
+  .st3-wrap .amenities-img-wrap { position: relative; width: 100%; height: 100%; }
+  .st3-wrap .amenities-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; display: block; }
 
-    /* ── WHY CHOOSE ──────────────────────────────── */
-    .why {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      padding: 5rem 5rem;
-      align-items: start;
-      max-width: 80rem;
-      margin: 0 auto;
-    }
-    .why h2 {
-      font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      color: #111827;
-    }
-    .why > div:first-child p { color: #4b5563; line-height: 1.85; }
-    .features { display: flex; flex-direction: column; gap: 1.5rem; }
-    .feature {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .feature-icon {
-      width: 48px; height: 48px;
-      background: #111827;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .feature-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; }
-    .feature h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: .25rem; color: #111827; }
-    .feature p { font-size: .95rem; color: #4b5563; line-height: 1.6; }
+  /* MODELS */
+  .st3-wrap .models { padding: 5rem; }
+  .st3-wrap .models-header { text-align: center; margin-bottom: 3rem; }
+  .st3-wrap .models-badge {
+    display: inline-block;
+    background: #ecf1f8; color: #434444;
+    font-size: .875rem; font-weight: 500;
+    padding: .5rem 1rem; border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .st3-wrap .models-header h2 {
+    font-size: clamp(1.3rem, 2.5vw, 2.25rem);
+    font-weight: 300;
+    color: #111827;
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  .st3-wrap .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .st3-wrap .card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 4px 24px rgba(0,0,0,.1);
+    padding: 1rem;
+    transition: box-shadow .3s;
+  }
+  .st3-wrap .card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.15); }
+  .st3-wrap .card-img-wrap { position: relative; }
+  .st3-wrap .card-img { width: 100%; height: 256px; object-fit: cover; border-radius: 12px; display: block; }
+  .st3-wrap .badge-sale {
+    position: absolute; top: 1rem; left: 1rem;
+    background: #13223a; color: #fff;
+    font-size: .875rem; font-weight: 500;
+    padding: .25rem .75rem; border-radius: 999px;
+  }
+  .st3-wrap .card-body { padding: 1rem; }
+  .st3-wrap .card-price-row { padding: .5rem 0; display: inline-block; margin-bottom: .5rem; }
+  .st3-wrap .card-price { font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: .25rem; }
+  .st3-wrap .price-usd {
+    background: #111827; color: #fff;
+    border-radius: 999px;
+    padding: .25rem .75rem;
+    font-size: .875rem;
+  }
+  .st3-wrap .card-name { font-size: .95rem; font-weight: 600; color: #111827; margin-bottom: .75rem; }
+  .st3-wrap .specs { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .75rem; }
+  .st3-wrap .spec {
+    background: #f3f4f6; color: #374151;
+    font-size: .75rem;
+    padding: .375rem .75rem;
+    border-radius: 999px;
+    display: inline-flex; align-items: center; gap: .375rem;
+  }
+  .st3-wrap .spec svg { width: 14px; height: 14px; stroke: #374151; fill: none; }
+  .st3-wrap .card-loc { font-size: .875rem; color: #6b7280; display: flex; align-items: center; gap: .25rem; }
+  .st3-wrap .card-loc svg { width: 14px; height: 14px; stroke: #6b7280; fill: none; }
 
-    /* ── AMENITIES ───────────────────────────────── */
-    .amenities {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      padding: 5rem 5rem;
-      align-items: center;
-      max-width: 90rem;
-      margin: 0 auto;
-    }
-    .amenities h2 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 2rem;
-      color: #111827;
-    }
-    .amenities-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .amenities-list li {
-      display: flex; align-items: center; gap: 1rem;
-      font-size: 1.125rem; font-weight: 500; color: #111827;
-    }
-    .check {
-      width: 32px; height: 32px;
-      background: #111827;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .check svg { width: 16px; height: 16px; fill: #fff; }
-    .amenities-img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.12);
-      display: block;
-    }
+  /* EXPLORE */
+  .st3-wrap .explore { padding: 5rem 0 0; width: 100%; }
+  .st3-wrap .explore h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.875rem);
+    font-weight: 600;
+    text-align: center;
+    color: #111827;
+    margin-bottom: 3rem;
+    padding: 0 5rem;
+  }
+  .st3-wrap .explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; width: 100%; }
+  .st3-wrap .explore-card { position: relative; overflow: hidden; aspect-ratio: 4/3; }
+  .st3-wrap .explore-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+  .st3-wrap .explore-card:hover img { transform: scale(1.05); }
+  .st3-wrap .explore-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.01));
+  }
+  .st3-wrap .explore-info {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    padding: 1.5rem;
+  }
+  .st3-wrap .explore-info h3 { font-size: 1.875rem; font-weight: 500; color: #fff; margin-bottom: .25rem; }
+  .st3-wrap .explore-info p { font-size: .875rem; color: rgba(255,255,255,.8); }
 
-    /* ── MODELS ──────────────────────────────────── */
-    .models { padding: 5rem 5rem; }
-    .models-header { text-align: center; margin-bottom: 3rem; }
-    .models-badge {
-      display: inline-block;
-      background: #ecf1f8; color: #434444;
-      font-size: .875rem; font-weight: 500;
-      padding: .5rem 1rem; border-radius: 999px;
-      margin-bottom: 1rem;
-    }
-    .models-header h2 {
-      font-size: clamp(1.3rem, 2.5vw, 2.25rem);
-      font-weight: 300;
-      color: #111827;
-      max-width: 56rem;
-      margin: 0 auto;
-    }
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid #d1d5db;
-      box-shadow: 0 4px 24px rgba(0,0,0,.1);
-      padding: 1rem;
-      transition: box-shadow .3s;
-    }
-    .card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.15); }
-    .card-img-wrap { position: relative; }
-    .card-img { width: 100%; height: 256px; object-fit: cover; border-radius: 12px; display: block; }
-    .badge-sale {
-      position: absolute;
-      top: 1rem; left: 1rem;
-      background: #13223a; color: #fff;
-      font-size: .875rem; font-weight: 500;
-      padding: .25rem .75rem; border-radius: 999px;
-    }
-    .card-body { padding: 1rem; }
-    .card-price-row { padding: .5rem 0; display: inline-block; margin-bottom: .5rem; }
-    .card-price {
-      font-weight: 600; font-size: 1rem;
-      display: flex; align-items: center; gap: .25rem;
-    }
-    .price-usd {
-      background: #111827; color: #fff;
-      border-radius: 999px;
-      padding: .25rem .75rem;
-      font-size: .875rem;
-    }
-    .card-name { font-size: .95rem; font-weight: 600; color: #111827; margin-bottom: .75rem; }
-    .specs { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .75rem; }
-    .spec {
-      background: #f3f4f6; color: #374151;
-      font-size: .75rem;
-      padding: .375rem .75rem;
-      border-radius: 999px;
-      display: inline-flex; align-items: center; gap: .375rem;
-    }
-    .spec svg { width: 14px; height: 14px; stroke: #374151; fill: none; }
-    .card-loc {
-      font-size: .875rem; color: #6b7280;
-      display: flex; align-items: center; gap: .25rem;
-    }
-    .card-loc svg { width: 14px; height: 14px; stroke: #6b7280; fill: none; }
+  /* CONTACT */
+  .st3-wrap .contact { padding: 5rem; }
+  .st3-wrap .contact h2 {
+    font-size: clamp(1.4rem, 2.5vw, 2.25rem);
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 3rem;
+  }
+  .st3-wrap .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .st3-wrap .contact-left { display: flex; flex-direction: column; gap: 2rem; }
+  .st3-wrap .contact-desc { color: #4b5563; line-height: 1.75; }
+  .st3-wrap .contact-info-text { display: flex; flex-direction: column; gap: .5rem; }
+  .st3-wrap .contact-info-text p { color: #111827; font-size: .95rem; }
+  .st3-wrap .contact-info-text strong { font-weight: 500; }
+  .st3-wrap .contact-form-wrap { background: #f9fafb; padding: 2rem; border-radius: 12px; }
+  .st3-wrap .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .st3-wrap .form-group { display: flex; flex-direction: column; gap: .25rem; }
+  .st3-wrap .form-group label { font-size: .875rem; font-weight: 500; color: #374151; }
+  .st3-wrap .contact-form input,
+  .st3-wrap .contact-form textarea {
+    width: 100%;
+    padding: .75rem 1rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: .875rem;
+    font-family: inherit;
+    color: #111827;
+    background: #fff;
+    outline: none;
+  }
+  .st3-wrap .contact-form input:focus,
+  .st3-wrap .contact-form textarea:focus { border-color: #1b5db8; }
+  .st3-wrap .contact-form textarea { resize: none; }
+  .st3-wrap .btn-submit {
+    width: 100%;
+    background: #111827; color: #fff;
+    border: none; border-radius: 999px;
+    padding: 1rem 2rem;
+    font-size: 1rem; font-weight: 600;
+    font-family: inherit; cursor: pointer;
+    transition: background .2s;
+  }
+  .st3-wrap .btn-submit:hover { background: #1f2937; }
 
-    /* ── EXPLORE ─────────────────────────────────── */
-    .explore { padding: 5rem 5rem; }
-    .explore h2 {
-      font-size: clamp(1.4rem, 2.5vw, 1.875rem);
-      font-weight: 600;
-      text-align: center;
-      color: #111827;
-      margin-bottom: 3rem;
-    }
-    .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
-    }
-    .explore-card {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-    }
-    .explore-card img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform .5s;
-    }
-    .explore-card:hover img { transform: scale(1.05); }
-    .explore-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.01));
-    }
-    .explore-info {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 1.5rem;
-    }
-    .explore-info h3 { font-size: 1.875rem; font-weight: 500; color: #fff; margin-bottom: .25rem; }
-    .explore-info p { font-size: .875rem; color: rgba(255,255,255,.8); }
+  /* CAROUSEL */
+  .st3-wrap .carousel-wrap {
+    position: relative;
+    height: 700px;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    overflow: hidden;
+  }
+  .st3-wrap .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s; }
+  .st3-wrap .carousel-slide.active { opacity: 1; }
+  .st3-wrap .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+  .st3-wrap .carousel-dots {
+    position: absolute; bottom: 1rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: .5rem;
+  }
+  .st3-wrap .carousel-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.5);
+    border: none; cursor: pointer; padding: 0;
+    transition: background .2s;
+  }
+  .st3-wrap .carousel-dot.active { background: #fff; }
 
-    /* ── CONTACT ─────────────────────────────────── */
-    .contact { padding: 5rem 5rem; }
-    .contact h2 {
-      font-size: clamp(1.4rem, 2.5vw, 2.25rem);
-      font-weight: 600;
-      color: #111827;
-      margin-bottom: 3rem;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-      max-width: 90rem;
-      margin: 0 auto;
-    }
-    .contact-left { display: flex; flex-direction: column; gap: 2rem; }
-    .contact-desc { color: #4b5563; line-height: 1.75; }
-    .contact-info-text { display: flex; flex-direction: column; gap: .5rem; }
-    .contact-info-text p { color: #111827; font-size: .95rem; }
-    .contact-info-text strong { font-weight: 500; }
-    .contact-form-wrap {
-      background: #f9fafb;
-      padding: 2rem;
-      border-radius: 12px;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: .25rem; }
-    .form-group label { font-size: .875rem; font-weight: 500; color: #374151; }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: .75rem 1rem;
-      border: 1.5px solid #d1d5db;
-      border-radius: 8px;
-      font-size: .875rem;
-      font-family: inherit;
-      color: #111827;
-      background: #fff;
-      outline: none;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus { border-color: #1b5db8; }
-    .contact-form textarea { resize: none; }
-    .btn-submit {
-      width: 100%;
-      background: #111827; color: #fff;
-      border: none; border-radius: 999px;
-      padding: 1rem 2rem;
-      font-size: 1rem; font-weight: 600;
-      font-family: inherit; cursor: pointer;
-      transition: background .2s;
-    }
-    .btn-submit:hover { background: #1f2937; }
+  /* LIGHTBOX */
+  .st3-lightbox {
+    display: none;
+    position: fixed; inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,.9);
+    align-items: center; justify-content: center;
+  }
+  .st3-lightbox.open { display: flex; }
+  .st3-lightbox .lb-img-wrap { max-width: 64rem; max-height: 90vh; width: 100%; padding: 0 5rem; }
+  .st3-lightbox .lb-img-wrap img { width: 100%; height: 100%; max-height: 85vh; object-fit: contain; border-radius: 8px; display: block; }
+  .st3-lightbox .lb-counter { text-align: center; color: rgba(255,255,255,.6); font-size: .875rem; margin-top: .75rem; }
+  .st3-lightbox .lb-btn {
+    position: absolute;
+    background: rgba(0,0,0,.4); border: none; border-radius: 50%;
+    color: #fff; cursor: pointer; padding: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .st3-lightbox .lb-btn:hover { background: rgba(0,0,0,.7); }
+  .st3-lightbox .lb-btn svg { width: 24px; height: 24px; stroke: #fff; fill: none; }
+  .st3-lightbox .lb-prev { left: 1rem; }
+  .st3-lightbox .lb-next { right: 1rem; }
+  .st3-lightbox .lb-close { top: 1rem; right: 1rem; }
 
-    /* ── CAROUSEL ────────────────────────────────── */
-    .carousel-wrap {
-      position: relative;
-      height: 700px;
-      border-radius: 8px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.12);
-      overflow: hidden;
-    }
-    .carousel-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 1s;
-    }
-    .carousel-slide.active { opacity: 1; }
-    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+  /* NAVBAR */
+  .st3-wrap .st3-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 70px;
+    padding: 0 2.5rem;
+  }
+  .st3-wrap .st3-nav-brand { font-weight: 700; font-size: 1rem; color: #111827; }
+  .st3-wrap .st3-nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .st3-wrap .st3-nav-links > li { position: relative; }
+  .st3-wrap .st3-nav-links a,
+  .st3-wrap .st3-nav-links button {
+    color: #374151;
+    text-decoration: none;
+    font-size: .875rem;
+    font-family: inherit;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .st3-wrap .st3-nav-links a:hover,
+  .st3-wrap .st3-nav-links button:hover { color: #111827; }
+  .st3-wrap .st3-nav-links > li > a svg,
+  .st3-wrap .st3-nav-links > li > button svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .st3-wrap .st3-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + .75rem);
+    left: 0;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    min-width: 200px;
+    z-index: 50;
+  }
+  .st3-wrap .st3-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    height: .75rem;
+  }
+  .st3-wrap .st3-nav-links > li:hover .st3-dropdown-menu { display: block; }
+  .st3-wrap .st3-dropdown-menu a {
+    display: block;
+    padding: .75rem 1.25rem;
+    font-size: .875rem;
+    font-weight: 500;
+    color: #111827;
+    white-space: nowrap;
+  }
+  .st3-wrap .st3-dropdown-menu a:hover { background: #f9fafb; }
+  .st3-wrap .st3-nav-cta {
+    justify-self: end;
+    background: #1b5db8;
+    color: #fff;
+    border-radius: 999px;
+    padding: .625rem 1.5rem;
+    font-size: .875rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .st3-wrap .st3-nav-cta:hover { background: #1749a0; color: #fff; }
 
-    /* ── LIGHTBOX ────────────────────────────────── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: rgba(0,0,0,.9);
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox-img-wrap {
-      max-width: 64rem;
-      max-height: 90vh;
-      width: 100%;
-      padding: 0 5rem;
-    }
-    .lightbox-img-wrap img {
-      width: 100%;
-      height: 100%;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 8px;
-      display: block;
-    }
-    .lightbox-counter {
-      text-align: center;
-      color: rgba(255,255,255,.6);
-      font-size: .875rem;
-      margin-top: .75rem;
-    }
-    .lightbox-btn {
-      position: absolute;
-      background: rgba(0,0,0,.4);
-      border: none;
-      border-radius: 50%;
-      color: #fff;
-      cursor: pointer;
-      padding: .75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s;
-    }
-    .lightbox-btn:hover { background: rgba(0,0,0,.7); }
-    .lightbox-btn svg { width: 24px; height: 24px; stroke: #fff; fill: none; }
-    .lightbox-prev { left: 1rem; }
-    .lightbox-next { right: 1rem; }
-    .lightbox-close { top: 1rem; right: 1rem; }
-    .carousel-dots {
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: .5rem;
-    }
-    .carousel-dot {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.5);
-      border: none; cursor: pointer; padding: 0;
-      transition: background .2s;
-    }
-    .carousel-dot.active { background: #fff; }
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .st3-wrap .about-text { padding: 3rem; }
+    .st3-wrap .amenities-content { padding: 3rem; }
+    .st3-wrap .why { padding: 3rem; }
+    .st3-wrap .models { padding: 3rem; }
+    .st3-wrap .explore { padding: 3rem 0 0; }
+    .st3-wrap .contact { padding: 3rem; }
+  }
+  @media (max-width: 768px) {
+    .st3-wrap .about { grid-template-columns: 1fr; min-height: auto; }
+    .st3-wrap .about-img-wrap { min-height: 320px; height: 320px; }
+    .st3-wrap .about-text { padding: 2.5rem 1.5rem; }
+    .st3-wrap .why { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+    .st3-wrap .amenities { grid-template-columns: 1fr; min-height: auto; }
+    .st3-wrap .amenities-content { padding: 2.5rem 1.5rem; }
+    .st3-wrap .amenities-img-wrap { min-height: 320px; height: 320px; }
+    .st3-wrap .models { padding: 2.5rem 1.5rem; }
+    .st3-wrap .cards { grid-template-columns: 1fr; }
+    .st3-wrap .explore { padding: 2.5rem 0 0; }
+    .st3-wrap .explore h2 { padding: 0 1.5rem; }
+    .st3-wrap .explore-grid { grid-template-columns: 1fr 1fr; }
+    .st3-wrap .contact { padding: 2.5rem 1.5rem; }
+    .st3-wrap .contact-grid { grid-template-columns: 1fr; }
+    .st3-wrap .carousel-wrap { height: 400px; }
+    .st3-wrap .st3-nav-links { display: none; }
+  }
+  @media (max-width: 480px) {
+    .st3-wrap .explore-grid { grid-template-columns: 1fr; }
+    .st3-wrap .form-row { grid-template-columns: 1fr; }
+  }
+</style>
 
-    /* ── FOOTER ──────────────────────────────────── */
-    footer {
-      background: #0a0f1e;
-      color: #9ca3af;
-      padding: 4rem 5rem 2.5rem;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    .footer-col h4 {
-      color: #f9fafb;
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .09em;
-      margin-bottom: 1.5rem;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
-    .footer-col ul li a {
-      text-decoration: none; color: #d1d5db;
-      font-size: .875rem;
-      transition: color .2s;
-    }
-    .footer-col ul li a:hover { color: #f9fafb; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 1.75rem;
-      text-align: center;
-      font-size: .75rem;
-      color: #6b7280;
-    }
-  </style>
-</head>
-<body>
-
-<!-- ═══ LIGHTBOX ══════════════════════════════════════ -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-btn lightbox-prev" onclick="event.stopPropagation(); lbGo(-1)" aria-label="Anterior">
+<!-- LIGHTBOX -->
+<div class="st3-lightbox" id="st3-lightbox" onclick="st3CloseLightbox()">
+  <button class="lb-btn lb-prev" onclick="event.stopPropagation(); st3LbGo(-1)" aria-label="Anterior">
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
   </button>
-  <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
-    <img id="lightbox-img" src="" alt="" />
-    <p class="lightbox-counter" id="lightbox-counter"></p>
+  <div class="lb-img-wrap" onclick="event.stopPropagation()">
+    <img id="st3-lightbox-img" src="" alt="" />
+    <p class="lb-counter" id="st3-lightbox-counter"></p>
   </div>
-  <button class="lightbox-btn lightbox-next" onclick="event.stopPropagation(); lbGo(1)" aria-label="Siguiente">
+  <button class="lb-btn lb-next" onclick="event.stopPropagation(); st3LbGo(1)" aria-label="Siguiente">
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
   </button>
-  <button class="lightbox-btn lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">
+  <button class="lb-btn lb-close" onclick="st3CloseLightbox()" aria-label="Cerrar">
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
 </div>
 
-<!-- ═══ NAVBAR ═══════════════════════════════════════ -->
-<nav class="nav">
-  <span class="nav-brand">L'Romana Real Estate</span>
-  <ul class="nav-links">
+<div class="st3-wrap">
+
+<!-- NAVBAR -->
+<nav class="st3-nav">
+  <span class="st3-nav-brand">L'Romana Real Estate</span>
+  <ul class="st3-nav-links">
     <li>
       <a href="#">
         Proyectos
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </a>
-      <div class="dropdown-menu">
-        <a href="#">Stone Towers III</a>
-        <a href="#">Costa Mar</a>
-        <a href="https://vercel.com/oliver-mejia-pegueros-projects/frailejon-ii/DSJir5kiW6kwSoJbucHDhpLz43wP" target="_blank">Altos de Frailejo</a>
-        <a href="https://frailejon-village-git-main-oliver-mejia-pegueros-projects.vercel.app/" target="_blank">Frailejon Village</a>
+      <div class="st3-dropdown-menu">
+        <a href="https://frailejon-ii.vercel.app/" target="_blank" rel="noopener noreferrer">Altos de Frailejon</a>
+        <a href="https://frailejon-village.vercel.app/" target="_blank" rel="noopener noreferrer">Frailejon Village</a>
+        <a href="https://costa-mar-1.vercel.app/" target="_blank" rel="noopener noreferrer">Costa Mar</a>
       </div>
     </li>
     <li><a href="#">Propiedades</a></li>
-    <li><a href="#">Agentes</a></li>
-    <li><a href="#">Sobre Nosotros</a></li>
-    <li><a href="#">Contacto</a></li>
+    <li><a href="https://www.lromanarealestate.com/agentes" target="_blank" rel="noopener noreferrer">Agentes</a></li>
+    <li><a href="https://www.lromanarealestate.com/about" target="_blank" rel="noopener noreferrer">Sobre Nosotros</a></li>
+    <li><a href="#st3-contacto">Contacto</a></li>
   </ul>
-  <a href="#contacto" class="nav-cta">Empezar Búsqueda</a>
+  <a href="#st3-contacto" class="st3-nav-cta">Empezar Búsqueda</a>
 </nav>
 
-<!-- ═══ HERO ══════════════════════════════════════════ -->
-<section class="hero">
+<!-- HERO -->
+<section>
   <div style="padding: 3.5rem 1rem 3rem;">
     <div style="max-width: 56rem; margin: 0 auto; text-align: center;">
       <h1 class="hero-title">
@@ -556,14 +498,10 @@
       </h1>
     </div>
   </div>
-  <img
-    class="hero-img"
-    src="https://www.lromanarealestate.com/home/hero-image.jpeg"
-    alt="Vista panorámica costera de Stone Towers III con aguas turquesas"
-  />
+  <img class="hero-img" src="https://www.lromanarealestate.com/home/hero-image.jpeg" alt="Vista panorámica costera de Stone Towers III con aguas turquesas" />
 </section>
 
-<!-- ═══ INTRO ═════════════════════════════════════════ -->
+<!-- INTRO -->
 <section class="intro">
   <p>
     Vive en un proyecto exclusivo en La Romana, diseñado para combinar lujo, funcionalidad
@@ -571,22 +509,18 @@
     lugar perfecto para empezar tu nueva vida.
   </p>
   <div class="intro-btns">
-    <a href="#contacto" class="btn-dark">Solicitar Más Información</a>
-    <a href="#about" class="btn-light">Conoce Más</a>
+    <a href="#st3-contacto" class="btn-dark">Solicitar Más Información</a>
+    <a href="#st3-about" class="btn-light">Conoce Más</a>
   </div>
 </section>
 
-<!-- ═══ ABOUT ═════════════════════════════════════════ -->
-<section id="about" style="padding: 5rem 5rem;">
+<!-- ABOUT -->
+<section id="st3-about">
   <div class="about">
     <div class="about-img-wrap">
-      <img
-        class="about-img"
-        src="https://www.lromanarealestate.com/stonetowers/foto1.avif"
-        alt="Vista aérea de Stone Towers III en La Romana"
-      />
+      <img class="about-img" src="https://www.lromanarealestate.com/stonetowers/foto1.avif" alt="Vista aérea de Stone Towers III en La Romana" />
     </div>
-    <div>
+    <div class="about-text">
       <h2>Vive Innovación, Lujo y Conexión en Stone Towers III</h2>
       <p>
         Stone Towers III es más que un complejo residencial; es una comunidad diseñada para
@@ -604,8 +538,8 @@
   </div>
 </section>
 
-<!-- ═══ WHY CHOOSE ════════════════════════════════════ -->
-<section style="padding: 5rem 5rem;">
+<!-- WHY CHOOSE -->
+<section>
   <div class="why">
     <div>
       <h2>¿Por Qué Elegir Stone Towers III?</h2>
@@ -656,49 +590,27 @@
   </div>
 </section>
 
-<!-- ═══ AMENITIES ═════════════════════════════════════ -->
-<section style="padding: 5rem 5rem;">
+<!-- AMENITIES -->
+<section>
   <div class="amenities">
-    <div>
+    <div class="amenities-content">
       <h2>Amenidades que Elevan<br>Tu Estilo de Vida</h2>
       <ul class="amenities-list">
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-          Piscina Privada
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-          Gimnasio Equipado
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-          Club Privado
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-          Seguridad Integral 24/7
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-          Gazebo con BBQ
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-          Jardines Tropicales
-        </li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>Piscina Privada</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>Gimnasio Equipado</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>Club Privado</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>Seguridad Integral 24/7</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>Gazebo con BBQ</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>Jardines Tropicales</li>
       </ul>
     </div>
-    <div>
-      <img
-        class="amenities-img"
-        src="https://stonetowers-iii.vercel.app/Torres.jpeg"
-        alt="Edificio moderno Stone Towers III con arquitectura contemporánea"
-      />
+    <div class="amenities-img-wrap">
+      <img class="amenities-img" src="https://stonetowers-iii.vercel.app/Torres.jpeg" alt="Edificio moderno Stone Towers III con arquitectura contemporánea" />
     </div>
   </div>
 </section>
 
-<!-- ═══ MODELS ════════════════════════════════════════ -->
+<!-- MODELS -->
 <section class="models">
   <div class="models-header">
     <span class="models-badge">Modelos del proyecto</span>
@@ -706,7 +618,6 @@
   </div>
   <div class="cards">
 
-    <!-- A1.1 -->
     <div class="card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://www.lromanarealestate.com/stonetowers/propiedad1.avif" alt="Plano Apartamento A1.1" />
@@ -714,34 +625,18 @@
       </div>
       <div class="card-body">
         <div class="card-price-row">
-          <p class="card-price">
-            <span class="price-usd">USD $</span>
-            1,000 Para Reservar
-          </p>
+          <p class="card-price"><span class="price-usd">USD $</span> 1,000 Para Reservar</p>
         </div>
         <h4 class="card-name">Stone Towers Apartamento A1.1</h4>
         <div class="specs">
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12V8a2 2 0 012-2h14a2 2 0 012 2v4M3 12v5a1 1 0 001 1h16a1 1 0 001-1v-5"/><path d="M9 10V8M15 10V8"/></svg>
-            1
-          </span>
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h2v8M4 12v5a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
-            1
-          </span>
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-            70 m²
-          </span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12V8a2 2 0 012-2h14a2 2 0 012 2v4M3 12v5a1 1 0 001 1h16a1 1 0 001-1v-5"/><path d="M9 10V8M15 10V8"/></svg>1</span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h2v8M4 12v5a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>1</span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>70 m²</span>
         </div>
-        <p class="card-loc">
-          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          La Romana
-        </p>
+        <p class="card-loc"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>La Romana</p>
       </div>
     </div>
 
-    <!-- A1.3 -->
     <div class="card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://www.lromanarealestate.com/stonetowers/propiedad2.avif" alt="Plano Apartamento A1.3" />
@@ -749,34 +644,18 @@
       </div>
       <div class="card-body">
         <div class="card-price-row">
-          <p class="card-price">
-            <span class="price-usd">USD $</span>
-            1,000 Para Reservar
-          </p>
+          <p class="card-price"><span class="price-usd">USD $</span> 1,000 Para Reservar</p>
         </div>
         <h4 class="card-name">Stone Towers Apartamento A1.3</h4>
         <div class="specs">
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12V8a2 2 0 012-2h14a2 2 0 012 2v4M3 12v5a1 1 0 001 1h16a1 1 0 001-1v-5"/><path d="M9 10V8M15 10V8"/></svg>
-            2
-          </span>
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h2v8M4 12v5a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
-            2
-          </span>
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-            90 m²
-          </span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12V8a2 2 0 012-2h14a2 2 0 012 2v4M3 12v5a1 1 0 001 1h16a1 1 0 001-1v-5"/><path d="M9 10V8M15 10V8"/></svg>2</span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h2v8M4 12v5a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>2</span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>90 m²</span>
         </div>
-        <p class="card-loc">
-          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          La Romana
-        </p>
+        <p class="card-loc"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>La Romana</p>
       </div>
     </div>
 
-    <!-- A1.2 -->
     <div class="card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://www.lromanarealestate.com/stonetowers/propiedad3.avif" alt="Plano Apartamento A1.2" />
@@ -784,37 +663,22 @@
       </div>
       <div class="card-body">
         <div class="card-price-row">
-          <p class="card-price">
-            <span class="price-usd">USD $</span>
-            1,000 Para Reservar
-          </p>
+          <p class="card-price"><span class="price-usd">USD $</span> 1,000 Para Reservar</p>
         </div>
         <h4 class="card-name">Stone Towers Apartamento A1.2</h4>
         <div class="specs">
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12V8a2 2 0 012-2h14a2 2 0 012 2v4M3 12v5a1 1 0 001 1h16a1 1 0 001-1v-5"/><path d="M9 10V8M15 10V8"/></svg>
-            1
-          </span>
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h2v8M4 12v5a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
-            1
-          </span>
-          <span class="spec">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-            70 m²
-          </span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12V8a2 2 0 012-2h14a2 2 0 012 2v4M3 12v5a1 1 0 001 1h16a1 1 0 001-1v-5"/><path d="M9 10V8M15 10V8"/></svg>1</span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h2v8M4 12v5a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>1</span>
+          <span class="spec"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>70 m²</span>
         </div>
-        <p class="card-loc">
-          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          La Romana
-        </p>
+        <p class="card-loc"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>La Romana</p>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ═══ EXPLORE ═══════════════════════════════════════ -->
+<!-- EXPLORE -->
 <section class="explore">
   <h2>Explora Lo Mejor de La Romana a Solo Minutos de Stone Towers III</h2>
   <div class="explore-grid">
@@ -851,12 +715,10 @@
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══════════════════════════════════════ -->
-<section class="contact" id="contacto">
+<!-- CONTACT -->
+<section class="contact" id="st3-contacto">
   <h2>¿Listo para Hacer de Stone Towers III Tu Nuevo Hogar?</h2>
   <div class="contact-grid">
-
-    <!-- Left: info + form -->
     <div class="contact-left">
       <div>
         <p class="contact-desc">
@@ -888,14 +750,13 @@
           </div>
           <div class="form-group">
             <label>Mensaje</label>
-            <textarea rows="5" placeholder="Explain it in details..."></textarea>
+            <textarea rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
           </div>
           <button type="submit" class="btn-submit">Enviar mi mensaje</button>
         </form>
       </div>
     </div>
 
-    <!-- Right: carousel -->
     <div>
       <div class="carousel-wrap">
         <div class="carousel-slide active">
@@ -914,106 +775,72 @@
           <img src="https://www.lromanarealestate.com/stonetowers/carrusel5.avif" alt="Stone Towers III 5" />
         </div>
         <div class="carousel-dots">
-          <button class="carousel-dot active" onclick="goTo(0)"></button>
-          <button class="carousel-dot" onclick="goTo(1)"></button>
-          <button class="carousel-dot" onclick="goTo(2)"></button>
-          <button class="carousel-dot" onclick="goTo(3)"></button>
-          <button class="carousel-dot" onclick="goTo(4)"></button>
+          <button class="carousel-dot active" onclick="st3GoTo(0)"></button>
+          <button class="carousel-dot" onclick="st3GoTo(1)"></button>
+          <button class="carousel-dot" onclick="st3GoTo(2)"></button>
+          <button class="carousel-dot" onclick="st3GoTo(3)"></button>
+          <button class="carousel-dot" onclick="st3GoTo(4)"></button>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══ FOOTER ════════════════════════════════════════ -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4>Navegación</h4>
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Nosotros</a></li>
-        <li><a href="#">Propiedades</a></li>
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Agentes 360</a></li>
-        <li><a href="#">Política de Privacidad</a></li>
-        <li><a href="#">Términos y Condiciones</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Agentes 360</h4>
-      <ul>
-        <li><a href="#">Freisy Carolina</a></li>
-        <li><a href="#">Yuderkis Pilier</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Proyectos</h4>
-      <ul>
-        <li><a href="#">Costa Mar</a></li>
-        <li><a href="#">Stone Tower 3</a></li>
-        <li><a href="#">Frailejon Village</a></li>
-        <li><a href="#">Ver propiedades</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    © 2025 L'Romana Real Estate. Todos los derechos reservados.
-  </div>
-</footer>
+</div>
 
 <script>
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots   = document.querySelectorAll('.carousel-dot');
-  let current  = 0;
+(function() {
+  var slides = document.querySelectorAll('.st3-wrap .carousel-slide');
+  var dots   = document.querySelectorAll('.st3-wrap .carousel-dot');
+  var current = 0;
 
-  function goTo(i) {
+  window.st3GoTo = function(i) {
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = i;
     slides[current].classList.add('active');
     dots[current].classList.add('active');
-  }
+  };
 
-  setInterval(() => goTo((current + 1) % slides.length), 3000);
+  setInterval(function() { st3GoTo((current + 1) % slides.length); }, 3000);
 
-  // Lightbox
-  const lbImages = Array.from(slides).map(s => ({ src: s.querySelector('img').src, alt: s.querySelector('img').alt }));
-  let lbCurrent = 0;
-
-  function openLightbox(i) {
-    lbCurrent = i;
-    updateLightbox();
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function lbGo(dir) {
-    lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
-    updateLightbox();
-  }
-
-  function updateLightbox() {
-    document.getElementById('lightbox-img').src = lbImages[lbCurrent].src;
-    document.getElementById('lightbox-img').alt = lbImages[lbCurrent].alt;
-    document.getElementById('lightbox-counter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
-  }
-
-  slides.forEach((slide, i) => slide.querySelector('img').addEventListener('click', () => openLightbox(i)));
-
-  document.addEventListener('keydown', (e) => {
-    if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'ArrowLeft')  lbGo(-1);
-    if (e.key === 'ArrowRight') lbGo(1);
-    if (e.key === 'Escape')     closeLightbox();
+  var lbImages = Array.from(slides).map(function(s) {
+    return { src: s.querySelector('img').src, alt: s.querySelector('img').alt };
   });
-</script>
+  var lbCurrent = 0;
 
-</body>
-</html>
+  window.st3OpenLightbox = function(i) {
+    lbCurrent = i;
+    st3UpdateLightbox();
+    document.getElementById('st3-lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.st3CloseLightbox = function() {
+    document.getElementById('st3-lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  window.st3LbGo = function(dir) {
+    lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
+    st3UpdateLightbox();
+  };
+
+  function st3UpdateLightbox() {
+    document.getElementById('st3-lightbox-img').src = lbImages[lbCurrent].src;
+    document.getElementById('st3-lightbox-img').alt = lbImages[lbCurrent].alt;
+    document.getElementById('st3-lightbox-counter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+  }
+
+  slides.forEach(function(slide, i) {
+    slide.querySelector('img').addEventListener('click', function() { st3OpenLightbox(i); });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('st3-lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  st3LbGo(-1);
+    if (e.key === 'ArrowRight') st3LbGo(1);
+    if (e.key === 'Escape')     st3CloseLightbox();
+  });
+})();
+</script>
