@@ -40,15 +40,16 @@ export default function Hero() {
       >
         <h1
           className="text-white font-bold leading-tight mb-10"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", maxWidth: "900px" }}
+          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", maxWidth: "1400px" }}
         >
-          Descubre el Hogar<br />Donde Tus Sueños Cobran Vida
+          <span style={{ display: "block" }}>Descubre el Hogar</span>
+          <span style={{ display: "block" }}>Donde Tus Sueños Cobran Vida</span>
         </h1>
         <div className="flex flex-wrap gap-4 justify-center">
           <a
             href="#modelos"
             className="px-8 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90"
-            style={{ background: "#c8e000", color: "#0f1629" }}
+            style={{ background: "linear-gradient(to right, #2d4750, #477954)", color: "#fff" }}
           >
             Explorar Modelos
           </a>
