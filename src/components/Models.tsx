@@ -6,16 +6,16 @@ const properties = [
     beds: 1, baths: 1, sqm: 70,
   },
   {
-    img: "https://www.lromanarealestate.com/stonetowers/propiedad2.avif",
-    alt: "Plano del Stone Towers Apartamento A1.3",
-    name: "Stone Towers Apartamento A1.3",
-    beds: 2, baths: 2, sqm: 90,
-  },
-  {
     img: "https://www.lromanarealestate.com/stonetowers/propiedad3.avif",
     alt: "Plano del Stone Towers Apartamento A1.2",
     name: "Stone Towers Apartamento A1.2",
     beds: 1, baths: 1, sqm: 70,
+  },
+  {
+    img: "https://www.lromanarealestate.com/stonetowers/propiedad2.avif",
+    alt: "Plano del Stone Towers Apartamento A1.3",
+    name: "Stone Towers Apartamento A1.3",
+    beds: 2, baths: 2, sqm: 90,
   },
 ];
 
